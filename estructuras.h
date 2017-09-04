@@ -342,16 +342,16 @@ void datos_persona(int* pCantidad)
 		fflush(stdin);
 		gotoxy(18,4);printf("Persona #%d: ", i+1);
 		gotoxy(18,6);printf("Ingrese el nombre de la persona: ");
-		fgets((persona+i)->nombre, 30, stdin);
+		fgets((pPersona+i)->nombre, 30, stdin);
 		gotoxy(18,7);printf("Es discapacitado ? S - N: ");
 		scanf("%c", pOpcion);
 		system("cls");
 		dibujaRectangulo(2,2,78,23);
 		if(*pOpcion == 's' || *pOpcion == 'S'){
-			(persona+i)->discapacitado = true;
+			(pPersona+i)->discapacitado = true;
 		}
 		else{
-			(persona+i)->discapacitado = false;
+			(pPersona+i)->discapacitado = false;
 		}
 	}
 }
@@ -360,7 +360,7 @@ void datos_persona(int* pCantidad)
 void contar_personas(int *pCantidad, int *discapacitado, int *noDiscapacitado)
 {
 	for(int i = 0; i < *pCantidad; i++){
-		((persona+i)->discapacitado)? (*discapacitado)++ : (*noDiscapacitado)++;
+		((pPersona+i)->discapacitado)? (*discapacitado)++ : (*noDiscapacitado)++;
 	}
 }
 
@@ -374,12 +374,12 @@ void vector_personas(int *pCantidad)
 	pSin = &sin;
 	
 	for(int i = 0; i < *pCantidad; i++){
-		if((persona+i)->discapacitado){
-			strcpy((perDiscapacitado+*pSin)->nombre,(persona+i)->nombre);
+		if((pPersona+i)->discapacitado){
+			strcpy((pPerDiscapacitado+*pSin)->nombre,(pPersona+i)->nombre);
 			(*pSin)++;
 		}
 		else{
-			strcpy((perNoDiscapacitado+*pCon)->nombre, (persona+i)->nombre);
+			strcpy((pPerNoDiscapacitado+*pCon)->nombre, (pPersona+i)->nombre);
 			(*pCon)++;
 		}
 	}
